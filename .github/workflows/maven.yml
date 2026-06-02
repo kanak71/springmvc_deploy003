@@ -12,6 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Debug workspace
+      run: ls -R
 
     - name: Set up JDK 21
       uses: actions/setup-java@v4
@@ -36,3 +38,5 @@ jobs:
         -Dmaven.tomcat.username=$TOMCAT_USERNAME \
         -Dmaven.tomcat.password=$TOMCAT_PASSWORD \
         -DskipTests
+
+        
