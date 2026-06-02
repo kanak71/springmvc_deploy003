@@ -23,11 +23,9 @@ jobs:
         cache: maven
 
     - name: Build with Maven
-      working-directory: deploy003_SpringMVC
       run: mvn clean package -DskipTests
 
     - name: Deploy to Tomcat Server
-      working-directory: deploy003_SpringMVC
       env:
         TOMCAT_USERNAME: ${{ secrets.TOMCAT_USERNAME }}
         TOMCAT_PASSWORD: ${{ secrets.TOMCAT_PASSWORD }}
