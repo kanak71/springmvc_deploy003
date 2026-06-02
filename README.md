@@ -1,4 +1,4 @@
-Github Actions
+## Github Actions
 
 1. Github Actions 사용
 
@@ -10,21 +10,21 @@ Github Actions
 
   - workflow를 작성한다
 
-## Git push만 하면 자동으로 Maven 빌드하고 Tomcat에 배포되는 자동 배포 시스템 만든 것
+### Git push만 하면 자동으로 Maven 빌드하고 Tomcat에 배포되는 자동 배포 시스템 만든 것
 
 
 
 
-1) Webhook(springMVC_deploy001에서 한 것)
-### GitHub가 다른 서버를 깨우는 알림 장치
+#### 1) Webhook(springMVC_deploy001에서 한 것)
+GitHub가 다른 서버를 깨우는 알림 장치
 
     - GitHub에서 이벤트 발생하면 (push, PR 등)
     지정한 URL로 HTTP 요청 날림
     예: Jenkins, 서버, Discord 등
 
-2) GitHub Actions (현재 repository)
+#### 2) GitHub Actions (현재 repository)
 
-### GitHub 안에서 아예 자동으로 다 실행하는 공장
+GitHub 안에서 아예 자동으로 다 실행하는 공장
 
   - push 발생
   GitHub 서버가 직접
