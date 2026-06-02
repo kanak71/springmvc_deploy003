@@ -2,24 +2,22 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ] #main 브렌치에서 Push 트리거
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ] #main 브렌치에서 Pull Request가 생성되면 트리거
+    branches: [ "main" ]
 
-# 결국은 GitHub의 데이터를 가져와서 Build를 진행 => IaaS+Paas => OS가 필요
 jobs:
   build:
-    runs-on: ubuntu-latest #GitHub Actions 에서 실행항 운영체제
+    runs-on: ubuntu-latest
 
-    steps: # 단계 별로 실행되는 workflow 이다
-
+    steps:
     - uses: actions/checkout@v4
 
-    - name: Set up JDK 21
+    - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
-        java-version: '21'
-        distribution: 'temurin'
+        distribution: temurin
+        java-version: 17
         cache: maven
 
     - name: Build with Maven
@@ -27,14 +25,14 @@ jobs:
 
     - name: Deploy to Tomcat Server
       env:
-        TOMCAT_USERNAME: ${{ secrets.TOMCAT_USERNAME }} # git secret의 TOMCAT 사용자 명 run에서 사용
-        TOMCAT_PASSWORD: ${{ secrets.TOMCAT_PASSWORD }} # git secret의 TOMCAT 비밀번호 run에서 사용
+        TOMCAT_USERNAME: ${{ secrets.TOMCAT_USERNAME }}
+        TOMCAT_PASSWORD: ${{ secrets.TOMCAT_PASSWORD }}
         TOMCAT_URL: 'https://camera-voter-acorn.ngrok-free.dev/manager/text'
 
+    - name: Deploy to Tomcat Server
       run: |
         mvn tomcat:redeploy \
         -Dmaven.tomcat.url=$TOMCAT_URL \
         -Dmaven.tomcat.username=$TOMCAT_USERNAME \
         -Dmaven.tomcat.password=$TOMCAT_PASSWORD \
-        -DskipTests \
-        -f ./deploy003_SpringMVC/pom.xml
+        -DskipTests
