@@ -29,7 +29,7 @@ jobs:
       env:
         TOMCAT_USERNAME: ${{ secrets.TOMCAT_USERNAME }}
         TOMCAT_PASSWORD: ${{ secrets.TOMCAT_PASSWORD }}
-        TOMCAT_URL: 'https://camera-voter-acorn.ngrok-free.dev/manager/text'
+        TOMCAT_URL: 'https://absinthe-construct-hyperlink.ngrok-free.dev//manager/text'
       run: |
         mvn tomcat:redeploy \
         -Dmaven.tomcat.url=$TOMCAT_URL \
