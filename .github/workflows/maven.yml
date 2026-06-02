@@ -13,23 +13,23 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up JDK 17
+    - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
-        distribution: temurin
-        java-version: 17
+        java-version: '21'
+        distribution: 'temurin'
         cache: maven
 
     - name: Build with Maven
+      working-directory: deploy003_SpringMVC
       run: mvn clean package -DskipTests
 
     - name: Deploy to Tomcat Server
+      working-directory: deploy003_SpringMVC
       env:
         TOMCAT_USERNAME: ${{ secrets.TOMCAT_USERNAME }}
         TOMCAT_PASSWORD: ${{ secrets.TOMCAT_PASSWORD }}
         TOMCAT_URL: 'https://camera-voter-acorn.ngrok-free.dev/manager/text'
-
-    - name: Deploy to Tomcat Server
       run: |
         mvn tomcat:redeploy \
         -Dmaven.tomcat.url=$TOMCAT_URL \
