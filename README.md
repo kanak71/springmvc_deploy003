@@ -18,7 +18,7 @@ Github Actions
 1) Webhook(springMVC_deploy001에서 한 것)
 ### GitHub가 다른 서버를 깨우는 알림 장치
 
-    GitHub에서 이벤트 발생하면 (push, PR 등)
+    - GitHub에서 이벤트 발생하면 (push, PR 등)
     지정한 URL로 HTTP 요청 날림
     예: Jenkins, 서버, Discord 등
 
@@ -26,13 +26,13 @@ Github Actions
 
 ### GitHub 안에서 아예 자동으로 다 실행하는 공장
 
-  push 발생
+  - push 발생
   GitHub 서버가 직접
   코드 가져오고
   Maven 빌드하고
   테스트하고
   배포
 
-  GitHub 자체가 CI/CD 실행 환경
-  서버 따로 없어도 됨
-  workflow(yml)로 “자동화 설계도” 작성
+  - GitHub 자체가 CI/CD 실행 환경
+   - 서버 따로 없어도 됨
+   - workflow(yml)로 “자동화 설계도” 작성
